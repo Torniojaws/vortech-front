@@ -1,0 +1,25 @@
+{
+  "name": "vortech-front",
+  "version": "0.0.1",
+  "description": "The frontend for Vortechmusic.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Torniojaws/vortech-front.git"
+  },
+  "keywords": [
+    "vortech",
+    "frontend",
+    "vue",
+    "bootstrap"
+  ],
+  "author": "Juha Untinen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Torniojaws/vortech-front/issues"
+  },
+  "homepage": "https://github.com/Torniojaws/vortech-front#readme"
+}
