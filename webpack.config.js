@@ -28,6 +28,9 @@ let config = {
             }, {
                 test: /\.json$/,
                 loader: 'json-loader'
+            }, {
+                test: /\.(png|jpg|gif)$/,
+                loader: 'file-loader'
             }
         ]
     }
