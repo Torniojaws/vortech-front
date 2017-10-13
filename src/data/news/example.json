@@ -1,0 +1,40 @@
+{
+    "news": [
+        {
+            "title": "Hello news!",
+            "date": "2017-05-05 12:34:56",
+            "author": "Juha",
+            "text": "This is the test news for testing <a href=\"#\">with links</a>"
+        },
+        {
+            "title": "More stuff!",
+            "date": "2017-05-05 12:35:56",
+            "author": "Juha",
+            "text": "Another news item goes here."
+        },
+        {
+            "title": "Oh noes",
+            "date": "2017-05-04 12:35:56",
+            "author": "Juha",
+            "text": "Last years news, well anyway"
+        },
+        {
+            "title": "Hello news!",
+            "date": "2017-05-03 12:34:56",
+            "author": "Juha",
+            "text": "This is the test news for testing <a href=\"#\">with links</a>"
+        },
+        {
+            "title": "More stuff!",
+            "date": "2017-05-02 12:35:56",
+            "author": "Juha",
+            "text": "Another news item goes here."
+        },
+        {
+            "title": "Oh noes",
+            "date": "2017-05-01 12:35:56",
+            "author": "Juha",
+            "text": "Last years news, well anyway"
+        }
+    ]
+}
