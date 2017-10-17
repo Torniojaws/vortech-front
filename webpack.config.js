@@ -31,6 +31,9 @@ let config = {
             }, {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'file-loader'
+            }, {
+                test: /\.(woff)$/,
+                loader: 'file-loader'
             }
         ]
     }

@@ -8,9 +8,10 @@ import {
 } from 'react-router-dom';
 
 // General stuff
-import Home from './scenes/Home/Home.jsx';
-import WelcomePage from './scenes/Home/components/WelcomePage/WelcomePage.jsx';
 import Footer from './scenes/Home/components/Footer/Footer.jsx';
+import Home from './scenes/Home/Home.jsx';
+import Login from './scenes/Login/Login.jsx';
+import WelcomePage from './scenes/Home/components/WelcomePage/WelcomePage.jsx';
 
 // Main pages
 import News from './scenes/News/News.jsx';
@@ -22,18 +23,25 @@ class App extends React.Component {
         return (
             <div className="container">
                 <Router>
-                    <div className="routerNeedsThis">
-                        <nav id="menu" className="row">
-                            <ul className="menulist">
-                                <li><Link to="/" className="menu">Home</Link></li>
-                                <li><Link to="/news" className="menu">News</Link></li>
-                            </ul>
-                        </nav>
-                        <Route exact={true} path="/" component={WelcomePage} />
-                        <Route path="/news" component={News} />
+                    <div className="row main-box">
+                        <div className="col-sm-4 center">
+                            <nav id="menu">
+                                <img src="static/img/logo.png" alt="Vortech" className="vortech-logo" />
+                                <ul className="list-unstyled menulist">
+                                    <li><Link to="/" className="menu">Home</Link></li>
+                                    <li><Link to="/news" className="menu">News</Link></li>
+                                </ul>
+                                <section id="login">
+                                    <Login />
+                                </section>
+                            </nav>
+                        </div>
+                        <div className="col-sm-8">
+                            <Route exact={true} path="/" component={WelcomePage} />
+                            <Route path="/news" component={News} />
+                        </div>
                     </div>
                 </Router>
-                <Footer />
             </div>
         );
     }
