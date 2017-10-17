@@ -1,7 +1,109 @@
+/* Variables used for most things */
+$main-text-color: rgb(110, 160, 180);
+$highlight: rgb(255, 240, 180);
+
 body {
-    background: url("static/img/background.jpg");
-    background-size: contain;
-    height: 1000px;
-    width: 2000px;
+    background: url("static/img/bg2018.jpg") black no-repeat center fixed;
+    background-size: cover;
+    font-family: "hattori_hanzolight";
     color: white;
+}
+
+.container {
+    height: 100vh;
+    overflow: auto;
+}
+
+/* The links all around the site */
+a {
+    color: white;
+    &:visited {
+        color: silver;
+    }
+    &:hover {
+        color: $highlight;
+        text-decoration: underline;
+    }
+}
+
+/* This is the black area under all main content */
+div.main-box {
+    background: rgba(0, 0, 0, 0.7);
+    min-height: 100%;
+}
+
+nav#menu {
+    position: relative;
+    top: 10vh;
+    img.vortech-logo {
+        height: 200px;
+        width: 200px;
+    }
+    form.main-login {
+        text-align: left;
+    }
+}
+
+/* News main page */
+li.paginationBox {
+    border: solid 1px silver;
+    padding: 8px;
+    &:hover {
+        background-color: $main-text-color;
+        color: black;
+        cursor: pointer;
+    }
+}
+
+/* News item */
+div.news {
+    h3 {
+        font-size: 1.1em;
+        text-transform: uppercase;
+        small {
+            position: relative;
+            left: 5px;
+            top: -1px;
+        }
+    }
+    p, footer {
+        color: $main-text-color;
+        margin-top: 10px;
+        margin-left: 8px;
+        padding-top: 6px;
+    }
+}
+
+/*************************** Helper classes **********************/
+
+/* This creates a fading border */
+.fadingBorder {
+    position: relative;
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+    }
+    &:before {
+        bottom: -1px;
+        width: 1px;
+        background: linear-gradient(white, transparent);
+    }
+    &:after {
+        right: -1px;
+        height: 1px;
+        background: linear-gradient(to right, white, transparent);
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'hattori_hanzolight';
+    src: url('static/fonts/Hattori_Hanzo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }

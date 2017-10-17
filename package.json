@@ -42,7 +42,7 @@
         "webpack-windows": "0.0.3"
     },
     "bugs": {
-        "url": "https://github.com/Torniojaws/vortech-react/issues"
+        "url": "https://github.com/Torniojaws/vortech-front/issues"
     },
-    "homepage": "https://github.com/Torniojaws/vortech-react#readme"
+    "homepage": "https://github.com/Torniojaws/vortech-front#readme"
 }

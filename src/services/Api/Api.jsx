@@ -14,13 +14,16 @@ class Api extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            baseUrl: "http://localhost:5000/api/v1.0",
+            baseUrl: "http://localhost:5000/api/1.0",
         }
         this.sendRequest = this.sendRequest.bind(this);
         this.handleResponse = this.handleResponse.bind(this);
     }
 
-    componentWillMount() {
+    /**
+     * We only want to handle the API call if we actually receive data to send to the API
+     */
+    componentWillReceiveProps() {
         this.sendRequest();
     }
 

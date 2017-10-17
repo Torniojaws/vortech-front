@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import NewsItem from './components/NewsItem/NewsItem.jsx';
+import axios from 'axios';
 
 class News extends React.Component {
     constructor(props) {
@@ -28,10 +29,19 @@ class News extends React.Component {
      * Get the news items from backend API
      */
     getNews() {
-        let example = require("../../data/news/example.json");
-        this.setState({
-            news: example.news
+        // let example = require("../../data/news/example.json");
+        let url = "http://localhost:5000/api/1.0/news/";
+
+        axios.get(url)
+        .then(res => {
+            this.setState({
+                news: res.data.news
+            })
         })
+        .catch(error => {
+            console.log("Request failed with:\n" + error);
+        })
+
     }
 
     render() {
@@ -59,7 +69,7 @@ class News extends React.Component {
         let counter = 0;
         return (
             <div id="page">
-                <h2>News goes here!</h2>
+                <h2>News</h2>
                 {
                     currentNewsObjects && currentNewsObjects.map(function(item) {
                         counter++
