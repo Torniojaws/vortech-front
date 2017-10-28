@@ -7,7 +7,13 @@ class NewsItem extends React.Component {
             <div className="news">
                 <h3>
                     {this.props.data.title}
-                    <small> {this.props.data.created} (Updated: {this.props.data.updated})</small>
+                    <small>
+                        {this.props.data.created}
+                        {
+                            this.props.data.updated &&
+                            <span> | <i>Updated:</i> {this.props.data.updated}</span>
+                        }
+                    </small>
                 </h3>
                 <div className="fadingBorder">
                     <p dangerouslySetInnerHTML={{ __html: this.props.data.contents}}></p>
