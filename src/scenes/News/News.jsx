@@ -1,7 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 import NewsItem from './components/NewsItem/NewsItem.jsx';
-import axios from 'axios';
+
+import callApi from '../../services/Api/api.js';
 
 class News extends React.Component {
     constructor(props) {
@@ -12,36 +13,26 @@ class News extends React.Component {
             itemsPerPage: 5
         }
         this.handlePagination = this.handlePagination.bind(this);
-        this.getNews = this.getNews.bind(this);
     }
 
-    componentWillMount() {
-        this.getNews();
+    /**
+     * We send a request to the API here to retrieve all the News.
+     */
+    componentDidMount() {
+        let promise = callApi("GET", "/news/", null);
+        promise.then(resp => {
+            this.setState({
+                news: resp.data.news
+            })
+        }).catch(err => {
+            console.log("Got error when retrieving:\n" + err);
+        })
     }
 
     handlePagination(event) {
         this.setState({
             currentPage: Number(event.target.id)
         })
-    }
-
-    /**
-     * Get the news items from backend API
-     */
-    getNews() {
-        // let example = require("../../data/news/example.json");
-        let url = "http://localhost:5000/api/1.0/news/";
-
-        axios.get(url)
-        .then(res => {
-            this.setState({
-                news: res.data.news
-            })
-        })
-        .catch(error => {
-            console.log("Request failed with:\n" + error);
-        })
-
     }
 
     render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import axios from 'axios';
+import callApi from '../../../../services/Api/api.js';
 
 /**
  * This is the form where you can login as a user, to access features only users (or admin) can do.
@@ -26,15 +26,12 @@ class LoginForm extends React.Component {
         event.preventDefault();
         console.log("In handle submit of LoginForm");
 
-        let url = "http://localhost:5000/api/1.0/login/";
-        axios.post(
-            url,
-            {
-                username: this.state.username,
-                password: this.state.password
-            }
-        )
-        .then(res => {
+        let promise = callApi("POST", "/login/", {
+            username: this.state.username,
+            password: this.state.password
+        })
+
+        promise.then(res => {
             this.receiveResponse(res);
         })
         .catch(error => {
@@ -55,37 +52,46 @@ class LoginForm extends React.Component {
     }
 
     receiveResponse(response) {
-        console.log("Got response from API:\n" + response);
+        console.log("Got response from API:\n" + JSON.stringify(response));
+        if (response.data.success === true) {
+            // Login was successful. Let's store the tokens and user ID
+            localStorage.setItem("accessToken", response.data.accessToken);
+            localStorage.setItem("refreshToken", response.data.refreshToken);
+            localStorage.setItem("userID", response.data.userID);
+        }
     }
 
     render() {
         return (
-            <form
-                className="main-login"
-                onSubmit={this.handleSubmit}
-            >
-                <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="username"
-                        placeholder="Username"
-                        onChange={this.handleUsernameChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        placeholder="Password"
-                        onChange={this.handlePasswordChange}
-                    />
-                </div>
-                <button type="submit" className="btn btn-default">Login</button>
-            </form>
+            <div>
+                <form
+                    className="main-login"
+                    onSubmit={this.handleSubmit}
+                >
+                    <div className="form-group">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="username"
+                            placeholder="Username"
+                            onChange={this.handleUsernameChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            name="password"
+                            placeholder="Password"
+                            onChange={this.handlePasswordChange}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-default">Login</button>
+                </form>
+                Or <a href="/register">Register</a>
+            </div>
         );
     }
 }

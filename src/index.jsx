@@ -15,6 +15,12 @@ import WelcomePage from './scenes/Home/components/WelcomePage/WelcomePage.jsx';
 
 // Main pages
 import News from './scenes/News/News.jsx';
+import Releases from './scenes/Releases/Releases.jsx';
+import Biography from './scenes/Biography/Biography.jsx';
+
+// Login
+import Register from './scenes/Register/Register.jsx';
+import Profile from './scenes/Profile/Profile.jsx';
 
 require('./main.scss');
 
@@ -30,6 +36,8 @@ class App extends React.Component {
                                 <ul className="list-unstyled menulist">
                                     <li><Link to="/" className="menu">Home</Link></li>
                                     <li><Link to="/news" className="menu">News</Link></li>
+                                    <li><Link to="/releases" className="menu">Releases</Link></li>
+                                    <li><Link to="/biography" className="menu">Biography</Link></li>
                                 </ul>
                                 <section id="login">
                                     <Login />
@@ -39,6 +47,10 @@ class App extends React.Component {
                         <div className="col-sm-8">
                             <Route exact={true} path="/" component={WelcomePage} />
                             <Route path="/news" component={News} />
+                            <Route path="/releases" component={Releases} />
+                            <Route path="/biography" component={Biography} />
+                            <Route path="/register" component={Register} />
+                            <Route path="/profile" component={Profile} />
                         </div>
                     </div>
                 </Router>

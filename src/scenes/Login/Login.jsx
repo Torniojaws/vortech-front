@@ -27,14 +27,19 @@ class Login extends React.Component {
      * @return {boolean}
      */
     isLogged() {
-        return localStorage.hasOwnProperty("loggedIn");
+        return localStorage.hasOwnProperty("accessToken");
     }
 
     render() {
         if (this.state.loggedIn) {
-            return <a href="/profile">View my profile</a>;
+            return (
+                <section>
+                    <a href="/profile">View my profile</a><br />
+                    <a href="/logout">Logout</a>
+                </section>
+            );
         } else {
-            return <LoginForm />;
+            return <LoginForm />
         }
     }
 }
