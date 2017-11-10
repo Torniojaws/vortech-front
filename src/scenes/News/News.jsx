@@ -19,7 +19,7 @@ class News extends React.Component {
      * We send a request to the API here to retrieve all the News.
      */
     componentDidMount() {
-        let promise = callApi("GET", "/news/", null);
+        let promise = callApi("GET", "/news/", null, null);
         promise.then(resp => {
             this.setState({
                 news: resp.data.news

@@ -32,7 +32,7 @@ class RegisterForm extends React.Component {
             email: this.state.email,
             username: this.state.username,
             password: this.state.password
-        })
+        }, null)
 
         promise.then(res => {
             console.log("User created!");

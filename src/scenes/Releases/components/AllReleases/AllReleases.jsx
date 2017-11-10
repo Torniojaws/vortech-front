@@ -21,7 +21,7 @@ class AllReleases extends React.Component {
 
     getReleases() {
         let config = {'Authorization': localStorage.accessToken};
-        let promise = callApi("GET", "/releases/", {'headers': config});
+        let promise = callApi("GET", "/releases/", null, {'headers': config});
 
         promise.then(res => {
             this.receiveResponse(res);

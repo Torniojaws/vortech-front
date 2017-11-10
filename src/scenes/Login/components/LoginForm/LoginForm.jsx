@@ -11,7 +11,8 @@ class LoginForm extends React.Component {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            loginFailed: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -29,13 +30,16 @@ class LoginForm extends React.Component {
         let promise = callApi("POST", "/login/", {
             username: this.state.username,
             password: this.state.password
-        })
+        }, null)
 
         promise.then(res => {
             this.receiveResponse(res);
         })
         .catch(error => {
             console.log("Request failed with:\n" + error);
+            this.setState({
+                loginFailed: true
+            })
         })
     }
 
@@ -52,18 +56,32 @@ class LoginForm extends React.Component {
     }
 
     receiveResponse(response) {
-        console.log("Got response from API:\n" + JSON.stringify(response));
         if (response.data.success === true) {
+            this.setState({
+                loginFailed: false
+            })
             // Login was successful. Let's store the tokens and user ID
             localStorage.setItem("accessToken", response.data.accessToken);
             localStorage.setItem("refreshToken", response.data.refreshToken);
             localStorage.setItem("userID", response.data.userID);
+            // Return home
+            window.location.href = "/";
+        } else {
+            this.setState({
+                loginFailed: true
+            })
         }
     }
 
     render() {
         return (
             <div>
+                {
+                    this.state.loginFailed === true &&
+                    <div className="alert alert-danger">
+                        <strong>Login failed!</strong> Check the username and password.
+                    </div>
+                }
                 <form
                     className="main-login"
                     onSubmit={this.handleSubmit}

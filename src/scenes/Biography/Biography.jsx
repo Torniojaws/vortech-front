@@ -13,7 +13,7 @@ class Biography extends React.Component {
     }
 
     componentDidMount() {
-        let promise = callApi("GET", "/biography/", null);
+        let promise = callApi("GET", "/biography/", null, null);
         promise.then(res => {
             this.receiveResponse(res);
         })
