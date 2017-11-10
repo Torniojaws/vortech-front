@@ -3,21 +3,21 @@
  */
 let axios = require('axios');
 
-function callApi(method, endpoint, params) {
+function callApi(method, endpoint, params, headers) {
     let baseUrl = "http://localhost:5000/api/1.0";
     let url = baseUrl + endpoint;
 
     switch (method.toLowerCase()) {
         case "get":
-            return axios.get(url, params);
+            return axios.get(url, params, headers);
         case "post":
-            return axios.post(url, params);
+            return axios.post(url, params, headers);
         case "put":
-            return axios.put(url, params);
+            return axios.put(url, params, headers);
         case "patch":
-            return axios.patch(url, params);
+            return axios.patch(url, params, headers);
         case "delete":
-            return axios.delete(url, params);
+            return axios.delete(url, params, headers);
         default:
             return "Unknown method!";
     }

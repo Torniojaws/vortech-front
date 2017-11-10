@@ -27,7 +27,7 @@ class Profile extends React.Component {
         let endpoint = "/users/" + localStorage.userID;
         let config = {'Authorization': localStorage.accessToken};
 
-        let promise = callApi("GET", endpoint, {'headers': config});
+        let promise = callApi("GET", endpoint, null, {'headers': config});
 
         promise.then(res => {
             this.receiveResponse(res);
