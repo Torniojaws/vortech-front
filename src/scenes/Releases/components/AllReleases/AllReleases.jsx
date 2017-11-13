@@ -42,7 +42,9 @@ class AllReleases extends React.Component {
             <section>
                 {
                     this.state.releases.map(function(release) {
-                        return <Release key={release.id} release={release} />;
+                        if (new Date(release.releaseDate) < new Date()) {
+                            return <Release key={release.id} release={release} />;
+                        }
                     })
                 }
             </section>

@@ -30,18 +30,18 @@ export function formatSeconds(s) {
  */
 function getMonthName(month) {
     let months = new Array(12);
-    months[0] = "January";
-    months[1] = "February";
-    months[2] = "March";
-    months[3] = "April";
+    months[0] = "Jan";
+    months[1] = "Feb";
+    months[2] = "Mar";
+    months[3] = "Apr";
     months[4] = "May";
-    months[5] = "June";
-    months[6] = "July";
-    months[7] = "August";
-    months[8] = "September";
-    months[9] = "October";
-    months[10] = "November";
-    months[11] = "December";
+    months[5] = "Jun";
+    months[6] = "Jul";
+    months[7] = "Aug";
+    months[8] = "Sep";
+    months[9] = "Oct";
+    months[10] = "Nov";
+    months[11] = "Dec";
 
     return months[month];
 }
