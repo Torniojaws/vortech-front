@@ -33,7 +33,7 @@ class Shows extends React.Component {
 
     receiveResponse(r) {
         this.setState({
-            shows: r.data.shows
+            shows: r.data.shows.reverse()
         });
     }
 
@@ -48,10 +48,10 @@ class Shows extends React.Component {
                 <table className="table table-responsive">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Location</th>
-                            <th>Venue</th>
-                            <th>Other bands</th>
+                            <th className="col-sm-3">Date</th>
+                            <th className="col-sm-2">Location</th>
+                            <th className="col-sm-3">Venue</th>
+                            <th className="col-sm-5">Other bands</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,12 +60,12 @@ class Shows extends React.Component {
                                 return (
                                     <tr key={show.venue}>
                                         <td>{this.formatDate(show.date)}</td>
-                                        <td>{show.country}</td>
+                                        <td>{show.countryCode}, {show.city}</td>
                                         <td>{show.venue}</td>
                                         <td>
                                             {
                                                 show.otherBands.map(function(band) {
-                                                    return <a href={band.website} key={band.name}>{band.name}</a>
+                                                    return <span><a href={band.website} key={band.name}>{band.name}</a>, </span>
                                                 })
                                             }
                                         </td>

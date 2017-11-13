@@ -19,6 +19,8 @@ import News from './scenes/News/News.jsx';
 import Releases from './scenes/Releases/Releases.jsx';
 import Biography from './scenes/Biography/Biography.jsx';
 import Shows from './scenes/Shows/Shows.jsx';
+import Contact from './scenes/Contact/Contact.jsx';
+import Guestbook from './scenes/Guestbook/Guestbook.jsx';
 
 // Login / Logout
 import Register from './scenes/Register/Register.jsx';
@@ -44,6 +46,8 @@ class App extends React.Component {
                                     <li><Link to="/releases" className="menu">Releases</Link></li>
                                     <li><Link to="/biography" className="menu">Biography</Link></li>
                                     <li><Link to="/shows" className="menu">Shows</Link></li>
+                                    <li><Link to="/contact" className="menu">Contact</Link></li>
+                                    <li><Link to="/guestbook" className="menu">Guestbook</Link></li>
                                 </ul>
                                 <section id="login">
                                     <Login />
@@ -58,6 +62,8 @@ class App extends React.Component {
                             <Route path="/releases" component={Releases} />
                             <Route path="/biography" component={Biography} />
                             <Route path="/shows" component={Shows} />
+                            <Route path="/contact" component={Contact} />
+                            <Route path="/guestbook" component={Guestbook} />
                             <Route path="/register" component={Register} />
                             <Route path="/profile" component={Profile} />
                             <Route path="/logout" component={Logout} />

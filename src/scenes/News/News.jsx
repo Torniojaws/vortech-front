@@ -10,7 +10,7 @@ class News extends React.Component {
         this.state = {
             news: [],
             currentPage: 1,
-            itemsPerPage: 5
+            itemsPerPage: 10
         }
         this.handlePagination = this.handlePagination.bind(this);
     }

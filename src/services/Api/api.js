@@ -4,7 +4,7 @@
 let axios = require('axios');
 
 function callApi(method, endpoint, params, headers) {
-    let baseUrl = "http://localhost:5000/api/1.0";
+    let baseUrl = "https://vortechmusic.com/api/1.0";
     let url = baseUrl + endpoint;
 
     switch (method.toLowerCase()) {
