@@ -25,9 +25,12 @@ class Profile extends React.Component {
      */
     getUserData() {
         let endpoint = "/users/" + localStorage.userID;
-        let config = {'Authorization': localStorage.accessToken};
+        let headers = {
+            'Authorization': localStorage.accessToken,
+            'User': localStorage.userID
+        };
 
-        let promise = callApi("GET", endpoint, null, {'headers': config});
+        let promise = callApi("GET", endpoint, null, headers);
 
         promise.then(res => {
             this.receiveResponse(res);
@@ -38,6 +41,7 @@ class Profile extends React.Component {
     }
 
     receiveResponse(r) {
+        console.log("Profile got response:\n" + JSON.stringify(r));
         let user = r.data.users[0];
         this.setState({
             name: user.name,

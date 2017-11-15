@@ -97,6 +97,11 @@ img.external {
     }
 }
 
+/* Release images */
+img.release-image {
+    width: 100%;
+}
+
 /* Guestbook */
 p.admin {
     color: $highlight;

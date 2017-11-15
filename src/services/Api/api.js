@@ -3,24 +3,16 @@
  */
 let axios = require('axios');
 
-function callApi(method, endpoint, params, headers) {
+function callApi(method, endpoint, data, headers) {
     let baseUrl = "https://vortechmusic.com/api/1.0";
     let url = baseUrl + endpoint;
 
-    switch (method.toLowerCase()) {
-        case "get":
-            return axios.get(url, params, headers);
-        case "post":
-            return axios.post(url, params, headers);
-        case "put":
-            return axios.put(url, params, headers);
-        case "patch":
-            return axios.patch(url, params, headers);
-        case "delete":
-            return axios.delete(url, params, headers);
-        default:
-            return "Unknown method!";
-    }
+    return axios({
+        method: method.toLowerCase(),
+        url: url,
+        data: data,
+        headers: headers
+    });
 }
 
 module.exports = callApi;

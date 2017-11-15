@@ -64,8 +64,16 @@ class Shows extends React.Component {
                                         <td>{show.venue}</td>
                                         <td>
                                             {
-                                                show.otherBands.map(function(band) {
-                                                    return <span><a href={band.website} key={band.name}>{band.name}</a>, </span>
+                                                show.otherBands.map(function(band, i) {
+                                                    return (
+                                                        <span key={band.name}>
+                                                            {
+                                                                band.website
+                                                                    ? <a href={band.website}>{band.name}</a>
+                                                                    : <span>{band.name}</span>
+                                                            }
+                                                        , </span>
+                                                    );
                                                 })
                                             }
                                         </td>
