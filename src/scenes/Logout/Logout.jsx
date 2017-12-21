@@ -24,8 +24,11 @@ class Logout extends React.Component {
 
     componentDidMount() {
         if (this.state.loggedIn) {
-            let config = {'Authorization': localStorage.accessToken, 'User': localStorage.userID};
-            let promise = callApi("POST", "/logout/", null, {'headers': config});
+            let headers = {
+                'Authorization': localStorage.accessToken,
+                'User': localStorage.userID
+            };
+            let promise = callApi("POST", "/logout/", null, headers);
 
             promise.then(res => {
                 if (res.data.success === true) {

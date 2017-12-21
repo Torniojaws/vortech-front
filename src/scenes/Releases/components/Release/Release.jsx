@@ -97,7 +97,7 @@ class Release extends React.Component {
             <div className="row">
                 <div className="col-sm-12">
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div className="col-sm-12">
                             <h3>
                                 {this.props.release.title}
                                 <small> {formatDateYMD(this.props.release.releaseDate)}</small>
@@ -107,6 +107,7 @@ class Release extends React.Component {
                     <div className="row">
                         <div className="col-sm-6">
                             <img
+                                className="release-image"
                                 src={this.getCoverPath(this.props.release.releaseCode)}
                                 alt={this.props.release.title}
                             />

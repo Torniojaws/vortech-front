@@ -8,7 +8,7 @@ class GuestbookPost extends React.Component {
         return (
             <div className="guestbookPost">
                 <div className="row">
-                    <div className="col-sm-3">
+                    <div className="col-lg-3">
                         {this.props.data.name}<br/>
                         {formatDateYMD(this.props.data.createdAt)}
                     </div>

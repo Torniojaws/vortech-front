@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 
 import callApi from '../../services/Api/api.js';
+import GuestbookForm from './components/GuestbookForm/GuestbookForm.jsx';
 import GuestbookPost from './components/GuestbookPost/GuestbookPost.jsx';
 
 class Guestbook extends React.Component {
@@ -39,8 +40,8 @@ class Guestbook extends React.Component {
         return (
             <div id="page">
                 <h1>Guestbook</h1>
-                <div className="alert alert-warning">The guestbook is in read-only mode! Adding new
-                posts will be enabled soon!</div>
+                <GuestbookForm />
+                <hr />
                 {
                     this.state.guestbook.map(function(post) {
                         return <GuestbookPost key={post.createdAt} data={post} />
