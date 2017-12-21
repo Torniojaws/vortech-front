@@ -1,9 +1,10 @@
 /* Variables used for most things */
-$main-text-color: rgb(110, 160, 180);
 $highlight: rgb(255, 240, 180);
+$link-hover: rgb(121, 145, 184);
+$main-text-color: rgb(110, 160, 180);
 
 body {
-    background: url("static/img/bg2018.jpg") black no-repeat center fixed;
+    background: url("static/img/bg2018v3.jpg") black no-repeat center fixed;
     background-size: cover;
     font-family: "hattori_hanzolight";
     color: white;
@@ -48,6 +49,23 @@ div.main-box {
 nav#menu {
     position: relative;
     top: 10vh;
+    ul, section {
+        text-align: left;
+        a {
+            color: white;
+            font-size: 80%;
+            padding-left: 125px;
+            text-align: left;
+            text-transform: uppercase;
+            &:visited {
+                color: white;
+            }
+            &:hover {
+                color: $link-hover;
+                text-decoration: none;
+            }
+        }
+    }
     img.vortech-logo {
         height: 200px;
         width: 200px;

@@ -22,6 +22,12 @@ import Shows from './scenes/Shows/Shows.jsx';
 import Contact from './scenes/Contact/Contact.jsx';
 import Guestbook from './scenes/Guestbook/Guestbook.jsx';
 
+// Admin pages
+import AddNews from './scenes/News/components/AddNews/AddNews.jsx';
+import AddRelease from './scenes/Releases/components/AddRelease/AddRelease.jsx';
+import UpdateBiography from './scenes/Biography/components/UpdateBiography/UpdateBiography.jsx';
+import AddShow from './scenes/Shows/components/AddShow/AddShow.jsx';
+
 // Login / Logout
 import Register from './scenes/Register/Register.jsx';
 import Profile from './scenes/Profile/Profile.jsx';
@@ -59,9 +65,13 @@ class App extends React.Component {
                         <div className="col-sm-8">
                             <Route exact={true} path="/" component={WelcomePage} />
                             <Route path="/news" component={News} />
+                            <Route path="/addNews" component={AddNews} />
                             <Route path="/releases" component={Releases} />
+                            <Route path="/addRelease" component={AddRelease} />
                             <Route path="/biography" component={Biography} />
+                            <Route path="/updateBiography" component={UpdateBiography} />
                             <Route path="/shows" component={Shows} />
+                            <Route path="/addShow" component={AddShow} />
                             <Route path="/contact" component={Contact} />
                             <Route path="/guestbook" component={Guestbook} />
                             <Route path="/register" component={Register} />
