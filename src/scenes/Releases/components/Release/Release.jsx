@@ -98,7 +98,7 @@ class Release extends React.Component {
                 <div className="col-sm-12">
                     <div className="row">
                         <div className="col-sm-12">
-                            <h3>
+                            <h3 className="release-title">
                                 {this.props.release.title}
                                 <small> {formatDateYMD(this.props.release.releaseDate)}</small>
                             </h3>

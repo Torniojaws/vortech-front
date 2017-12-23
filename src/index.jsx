@@ -42,27 +42,38 @@ class App extends React.Component {
         return (
             <div className="container">
                 <Router>
-                    <div className="row main-box">
-                        <div className="col-sm-4 center">
-                            <nav id="menu">
-                                <img src="static/img/logo.png" alt="Vortech" className="vortech-logo" />
-                                <ul className="list-unstyled menulist">
-                                    <li><Link to="/" className="menu">Home</Link></li>
-                                    <li><Link to="/news" className="menu">News</Link></li>
-                                    <li><Link to="/releases" className="menu">Releases</Link></li>
-                                    <li><Link to="/biography" className="menu">Biography</Link></li>
-                                    <li><Link to="/shows" className="menu">Shows</Link></li>
-                                    <li><Link to="/contact" className="menu">Contact</Link></li>
-                                    <li><Link to="/guestbook" className="menu">Guestbook</Link></li>
-                                </ul>
-                                <section id="login">
-                                    <Login />
-                                </section>
-                                <br />
-                                <VisitorCounter />
-                            </nav>
+                    <div id="main-container" className="row main-box">
+                        <div id="main-navigation" className="col-sm-4">
+                            <div className="row">
+                                <div className="col-md-3"></div>
+                                <div className="col-md-6">
+                                    <img src="static/img/logo.png" alt="Vortech" className="vortech-logo" />
+                                </div>
+                                <div className="col-md-3"></div>
+                            </div>
+                            <div className="row">
+                                <div className="col-sm-5"></div>
+                                <div className="col-sm-7">
+                                    <nav id="menu">
+                                        <ul className="list-unstyled menulist">
+                                            <li><Link to="/" className="menu">Home</Link></li>
+                                            <li><Link to="/news" className="menu">News</Link></li>
+                                            <li><Link to="/releases" className="menu">Releases</Link></li>
+                                            <li><Link to="/biography" className="menu">Biography</Link></li>
+                                            <li><Link to="/shows" className="menu">Shows</Link></li>
+                                            <li><Link to="/contact" className="menu">Contact</Link></li>
+                                            <li><Link to="/guestbook" className="menu">Guestbook</Link></li>
+                                        </ul>
+                                        <section id="login">
+                                            <Login />
+                                        </section>
+                                        <br />
+                                        <VisitorCounter />
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col-sm-8">
+                        <div id="main-content" className="col-sm-8">
                             <Route exact={true} path="/" component={WelcomePage} />
                             <Route path="/news" component={News} />
                             <Route path="/addNews" component={AddNews} />

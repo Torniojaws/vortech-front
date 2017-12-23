@@ -24,7 +24,7 @@ function callApi(method, endpoint, data, headers) {
     });
 
     response.then(res => {
-        console.log(res);
+        // Do nothing, we return later on if no error happens
     })
     .catch(err => {
         // If a 401 is returned, we do:
@@ -36,7 +36,6 @@ function callApi(method, endpoint, data, headers) {
             let retryResponse = retry(method, url, data, headers);
             return retryResponse;
         }
-        console.log(err);
     })
 
     return response;

@@ -39,7 +39,7 @@ class Login extends React.Component {
                 </section>
             );
         } else {
-            return <LoginForm />
+            return <blockquote><LoginForm /></blockquote>
         }
     }
 }
