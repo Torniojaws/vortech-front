@@ -1,7 +1,7 @@
 /* Variables used for most things */
 $highlight: rgb(255, 240, 180);
 $link-hover: rgb(121, 145, 184);
-$main-text-color: rgb(110, 160, 180);
+$main-header-color: $link-hover;
 
 body {
     background: url("static/img/bg2018v3.jpg") black no-repeat center fixed;
@@ -22,7 +22,7 @@ body {
 
 /* The links all around the site */
 a {
-    color: white;
+    color: $highlight;
     &:visited {
         color: silver;
     }
@@ -47,23 +47,17 @@ div.main-box {
 }
 
 nav#menu {
-    position: relative;
-    top: 10vh;
-    ul, section {
-        text-align: left;
-        a {
+    text-align: left;
+    a {
+        color: white;
+        font-size: 80%;
+        text-transform: uppercase;
+        &:visited {
             color: white;
-            font-size: 80%;
-            padding-left: 125px;
-            text-align: left;
-            text-transform: uppercase;
-            &:visited {
-                color: white;
-            }
-            &:hover {
-                color: $link-hover;
-                text-decoration: none;
-            }
+        }
+        &:hover {
+            color: $link-hover;
+            text-decoration: none;
         }
     }
     img.vortech-logo {
@@ -81,7 +75,7 @@ li.paginationBox {
     float: left;
     padding: 8px;
     &:hover {
-        background-color: $main-text-color;
+        background-color: $main-header-color;
         color: black;
         cursor: pointer;
     }
@@ -90,6 +84,7 @@ li.paginationBox {
 /* News item */
 div.news {
     h3 {
+        color: $main-header-color;
         font-size: 1.1em;
         text-transform: uppercase;
         small {
@@ -99,7 +94,7 @@ div.news {
         }
     }
     p, footer {
-        color: $main-text-color;
+        color: white;
         margin-top: 10px;
         margin-left: 8px;
         padding-top: 6px;
@@ -115,7 +110,11 @@ img.external {
     }
 }
 
-/* Release images */
+/* Releases */
+h3.release-title {
+    color: $main-header-color;
+}
+
 img.release-image {
     width: 100%;
 }
