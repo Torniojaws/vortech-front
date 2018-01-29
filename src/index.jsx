@@ -20,6 +20,7 @@ import Releases from './scenes/Releases/Releases.jsx';
 import Biography from './scenes/Biography/Biography.jsx';
 import Shows from './scenes/Shows/Shows.jsx';
 import Contact from './scenes/Contact/Contact.jsx';
+import Shop from './scenes/Shop/Shop.jsx';
 import Guestbook from './scenes/Guestbook/Guestbook.jsx';
 
 // Admin pages
@@ -47,7 +48,9 @@ class App extends React.Component {
                             <div className="row">
                                 <div className="col-md-3"></div>
                                 <div className="col-md-6">
-                                    <img src="static/img/logo.png" alt="Vortech" className="vortech-logo" />
+                                    <Link to="/">
+                                        <img src="static/img/logo.png" alt="Vortech" className="vortech-logo" />
+                                    </Link>
                                 </div>
                                 <div className="col-md-3"></div>
                             </div>
@@ -56,18 +59,17 @@ class App extends React.Component {
                                 <div className="col-sm-7">
                                     <nav id="menu">
                                         <ul className="list-unstyled menulist">
-                                            <li><Link to="/" className="menu">Home</Link></li>
                                             <li><Link to="/news" className="menu">News</Link></li>
                                             <li><Link to="/releases" className="menu">Releases</Link></li>
                                             <li><Link to="/biography" className="menu">Biography</Link></li>
                                             <li><Link to="/shows" className="menu">Shows</Link></li>
                                             <li><Link to="/contact" className="menu">Contact</Link></li>
+                                            <li><Link to="/shop" className="menu">Shop</Link></li>
                                             <li><Link to="/guestbook" className="menu">Guestbook</Link></li>
                                         </ul>
                                         <section id="login">
                                             <Login />
                                         </section>
-                                        <br />
                                         <VisitorCounter />
                                     </nav>
                                 </div>
@@ -84,6 +86,7 @@ class App extends React.Component {
                             <Route path="/shows" component={Shows} />
                             <Route path="/addShow" component={AddShow} />
                             <Route path="/contact" component={Contact} />
+                            <Route path="/shop" component={Shop} />
                             <Route path="/guestbook" component={Guestbook} />
                             <Route path="/register" component={Register} />
                             <Route path="/profile" component={Profile} />
