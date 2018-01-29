@@ -60,7 +60,7 @@ class VisitorCounter extends React.Component {
     render() {
         return (
             <section id="visitors">
-                <p>{this.state.count}</p>
+                <p>{this.state.count} visitors</p>
             </section>
         );
     }

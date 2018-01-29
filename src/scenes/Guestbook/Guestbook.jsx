@@ -39,7 +39,7 @@ class Guestbook extends React.Component {
     render() {
         return (
             <div id="page">
-                <h1>Guestbook</h1>
+                <h2>Guestbook</h2>
                 <GuestbookForm />
                 <hr />
                 {

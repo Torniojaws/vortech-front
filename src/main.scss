@@ -17,7 +17,6 @@ body {
 
 .container {
     height: 100vh;
-    overflow: auto;
 }
 
 /* The links all around the site */
@@ -42,7 +41,7 @@ a {
 
 /* This is the black area under all main content */
 div.main-box {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     min-height: 100%;
 }
 
@@ -116,6 +115,10 @@ h3.release-title {
 }
 
 img.release-image {
+    width: 100%;
+}
+img.shop-bandcamp {
+    max-width: 500px;
     width: 100%;
 }
 

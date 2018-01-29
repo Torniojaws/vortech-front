@@ -45,7 +45,7 @@ class GuestbookForm extends React.Component {
 
     // specifying verify callback function
     verifyCallback(response) {
-        console.log(response);
+        console.log("recaptcha response:\n" + response);
     }
 
     /**
@@ -185,7 +185,7 @@ class GuestbookForm extends React.Component {
                             sitekey="6LeV0DoUAAAAAExxJYlRe5gWuTy1ucgafTYcLkJf"
                             render="explicit"
                             verifyCallback={this.verifyCallback}
-                            onloadCallback={this.callback}
+                            onloadCallback={this.captchaCallback}
                         />
                     }
                     <button type="submit" className="btn btn-default">Post to Guestbook</button>
