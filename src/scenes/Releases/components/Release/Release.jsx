@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import Modal from 'react-responsive-modal';
 
 import callApi from '../../../../services/Api/api.js';
 import {formatDateYMD} from '../../../../services/Datetime/Datetime.js';
@@ -9,17 +10,44 @@ class Release extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            downloadCount: 0
+            downloadCount: 0,
+            open: false,
+            lyrics: {
+                lyrics: "",
+                author: "",
+                songTitle: ""
+            }
         }
         this.getCoverPath = this.getCoverPath.bind(this);
         this.getDownloadPath = this.getDownloadPath.bind(this);
         this.addDownload = this.addDownload.bind(this);
         this.getFilename = this.getFilename.bind(this);
         this.getDownloadCount = this.getDownloadCount.bind(this);
+        this.onOpenModal = this.onOpenModal.bind(this);
+        this.onCloseModal = this.onCloseModal.bind(this);
     }
 
     componentDidMount() {
         this.getDownloadCount();
+    }
+
+    /**
+     * These are for the lyrics modal window
+     */
+    onOpenModal(songId) {
+        let promise = callApi("GET", "/songs/" + songId + "/lyrics/", null, null);
+        promise.then(res => {
+            this.setState({
+                lyrics: res.data,
+                open: true
+            })
+        })
+        .catch(error => {
+            console.log("Request failed with:\n" + error);
+        })
+    }
+    onCloseModal() {
+        this.setState({ open: false });
     }
 
     /**
@@ -131,22 +159,38 @@ class Release extends React.Component {
                     <p>
 
                     </p>
-                    <ol>
+                    <table className="releases">
+                        <tbody>
                         {
                             this.props.release.songs.map(function(song) {
-                                return <li key={song.title}>{song.title} ({formatSeconds(song.duration)})</li>
+                                return (
+                                    <tr key={song.title}>
+                                        <td>{song.title}</td>
+                                        <td>{formatSeconds(song.duration)}</td>
+                                        <td><a href="javascript:;" onClick={ () => this.onOpenModal(song.id) }>Lyrics</a></td>
+                                    </tr>
+                                );
                             }, this)
                         }
-                    </ol>
-                    <ul>
+                        </tbody>
+                    </table>
+                    <h2>Line-up</h2>
+                    <ul className="releases-people">
                         {
                             this.props.release.people.map(function(person) {
-                                return <li key={person.name}>{person.name} - {person.instruments}</li>
+                                return <li key={person.name}><b>{person.name}</b> | {person.instruments}</li>
                             })
                         }
                     </ul>
                     <hr />
                 </div>
+                <Modal open={this.state.open} onClose={this.onCloseModal}>
+                    <section className="lyricsModal">
+                        <h1>{this.state.lyrics.songTitle}</h1>
+                        <aside>Lyrics by: {this.state.lyrics.author}</aside>
+                        <p dangerouslySetInnerHTML={{ __html: this.state.lyrics.lyrics.replace(/\n/g, '<br />')}}></p>
+                    </section>
+                </Modal>
             </div>
         );
     }

@@ -16,8 +16,11 @@ class NewsItem extends React.Component {
                     </small>
                 </h3>
                 <div className="fadingBorder">
-                    <p dangerouslySetInnerHTML={{ __html: this.props.data.contents}}></p>
-                    <p>Categories: {this.props.data.categories}</p>
+                    <p dangerouslySetInnerHTML={{ __html: this.props.data.contents.replace(/\n/g, '<br />')}}></p>
+                    {
+                        Array.isArray(this.props.data.categories) && this.props.data.categories.length > 0 &&
+                        <p>Categories: {this.props.data.categories}</p>
+                    }
                 </div>
             </div>
         );

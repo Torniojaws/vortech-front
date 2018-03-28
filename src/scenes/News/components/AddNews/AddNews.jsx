@@ -29,9 +29,11 @@ class AddNews extends React.Component {
         };
 
         let headers = {
-            'User': localStorage.UserID,
+            'User': localStorage.userID,
             'Authorization': localStorage.accessToken
         };
+
+        console.log("Adding news:\n" + JSON.stringify(data) + "\nwith headers:\n" + JSON.stringify(headers));
 
         let promise = callApi("POST", "/news/", data, headers);
 
