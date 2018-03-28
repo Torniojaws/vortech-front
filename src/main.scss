@@ -2,13 +2,16 @@
 $highlight: rgb(255, 240, 180);
 $link-hover: rgb(121, 145, 184);
 $main-header-color: $link-hover;
+$dark-text: black;
+$faded-text: silver;
 
 body {
     background: url("static/img/bg2018v3.jpg") black no-repeat center fixed;
     background-size: cover;
-    font-family: "hattori_hanzolight";
     color: white;
+    font-family: "hattori_hanzolight";
     font-size: 16pt;
+    overflow-y: scroll;
 }
 
 .vortech-text {
@@ -112,6 +115,35 @@ img.external {
 /* Releases */
 h3.release-title {
     color: $main-header-color;
+    small {
+        color: $faded-text;
+    }
+}
+section.lyricsModal {
+    font-size: 80%;
+    color: $dark-text;
+    aside {
+        font-weight: bold;
+        color: grey;
+        margin-bottom: 2pt;
+    }
+}
+table.releases {
+    counter-reset: rowNumber;
+    tr > td:first-child {
+        counter-increment: rowNumber;
+    }
+    tr td:first-child::before {
+        content: counter(rowNumber)".";
+        min-width: 1em;
+        margin-right: 0.5em;
+    }
+    td {
+        padding-right: 1em;
+    }
+}
+ul.releases-people {
+    list-style-type: none;
 }
 
 img.release-image {

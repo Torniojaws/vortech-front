@@ -24,7 +24,7 @@ class AddRelease extends React.Component {
         };
 
         let headers = {
-            'User': localStorage.UserID,
+            'User': localStorage.userID,
             'Authorization': localStorage.accessToken
         };
 
