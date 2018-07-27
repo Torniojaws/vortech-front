@@ -12,57 +12,54 @@ let axios = require('axios');
  * @param {object} [data] is the optional message payload object, eg. {"something": 123}
  * @param {object} [headers] the optional extra request headers, eg. {"User": 123, "Authorization": "abc"}
  */
-function callApi(method, endpoint, data, headers) {
-    let baseUrl = "https://vortechmusic.com/api/1.0";
-    let url = baseUrl + endpoint;
+const callApi = (method, endpoint, data, headers) => {
+  const baseUrl = "https://vortechmusic.com/api/1.0";
+  const url = baseUrl + endpoint;
 
-    let response = axios({
-        method: method.toLowerCase(),
-        url: url,
-        data: data,
-        headers: headers
-    });
+  let response = axios({
+    method: method.toLowerCase(),
+    url: url,
+    data: data,
+    headers: headers
+  });
 
-    response.then(res => {
-        // Do nothing, we return later on if no error happens
-    })
-    .catch(err => {
-        // If a 401 is returned, we do:
-        // POST /refresh/
-        // {"User": 123, "Authorization": "abc"}
-        // And then retry the initial request
-        if (err.response.status === 401) {
-            attemptRefresh(baseUrl);
-            let retryResponse = retry(method, url, data, headers);
-            return retryResponse;
-        }
-    })
+  response.then(() => {
+    // Do nothing, we return later on if no error happens
+  })
+  .catch(err => {
+    // If a 401 is returned, we do:
+    // POST /refresh/
+    // {"User": 123, "Authorization": "abc"}
+    // And then retry the initial request
+    if (err.response.status === 401) {
+      attemptRefresh(baseUrl);
+      return retry(method, url, data, headers);
+    }
+  });
 
-    return response;
-}
+  return response;
+};
 
 /**
  * Call the Refresh token endpoint in the API and update the current Access Token if possible.
  * @param {string} baseUrl is the API base url, eg. https://vortechmusic.com/api/1.0/
  */
-function attemptRefresh(baseUrl) {
-    let response = axios({
-        method: "post",
-        url: baseUrl + "/refresh/",
-        data: null,
-        headers: {
-            "User": localStorage.getItem("userID"),
-            "Authorization": localStorage.getItem("refreshToken")
-        }
-    });
+const attemptRefresh = baseUrl => {
+  const response = axios({
+    method: 'post',
+    url: `${baseUrl}/refresh/`,
+    data: null,
+    headers: {
+      'User': localStorage.getItem('userID'),
+      'Authorization': localStorage.getItem('refreshToken')
+    }
+  });
 
-    response.then(res => {
-        localStorage.setItem("accessToken", res.data.accessToken);
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
+  response.then(res => {
+    localStorage.setItem('accessToken', res.data.accessToken);
+  })
+  .catch(err => err);
+};
 
 /**
  * Retry the initial request again with the possibly updated Access Token. If no new token could be
@@ -73,22 +70,14 @@ function attemptRefresh(baseUrl) {
  * @param {object} [data] is the optional message payload object, eg. {"something": 123}
  * @param {object} [headers] the optional extra request headers, eg. {"User": 123, "Authorization": "abc"}
  */
-function retry(method, url, data, headers) {
-    let response = axios({
-        method: method.toLowerCase(),
-        url: url,
-        data: data,
-        headers: headers
-    });
-
-    response.then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.log(err);
-    })
-
-    return response;
-}
+const retry = (method, url, data, headers) => {
+  let response = axios({
+    method: method.toLowerCase(),
+    url: url,
+    data: data,
+    headers: headers
+  });
+  response.then(res => res).catch(err => err);
+};
 
 module.exports = callApi;

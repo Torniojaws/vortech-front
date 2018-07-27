@@ -1,6 +1,6 @@
 # Vortech Frontend
 
-This will be the frontend for https://www.vortechmusic.com
+This is the frontend for https://www.vortechmusic.com
 
 ## Stack
 
@@ -14,7 +14,7 @@ This will be the frontend for https://www.vortechmusic.com
 ## The app
 
 This will be a single page app that should work in most modern browsers. It should provide all the
-features of the previous version hosted in a 3rd party webhotel. Having more features is welcome :)
+features of the previous version hosted in a 3rd party VPS. Having more features is welcome :)
 
 ## Backend
 
