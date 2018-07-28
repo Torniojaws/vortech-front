@@ -3,7 +3,7 @@ import React from 'react';
 import Externals from './components/Externals/Externals.jsx';
 
 class WelcomePage extends React.Component {
-  render() {
+  render () {
     return (
       <div id='page'>
         <h1 className='vortech-text'>Vortech</h1>

@@ -1,9 +1,8 @@
 import React from 'react';
-
 import callApi from '@/services/Api/api.js';
 
 class Contact extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       contact: this.getContactData()
@@ -11,17 +10,17 @@ class Contact extends React.Component {
     this.getContactData = this.getContactData.bind(this);
   }
 
-  async getContactData() {
-    const config = { 'Authorization': localStorage.accessToken };
+  async getContactData () {
+    const headers = { 'Authorization': localStorage.accessToken };
     try {
-      const response = await callApi('GET', '/contacts/', null, { 'headers': config });
+      const response = await callApi('GET', '/contacts/', null, headers);
       this.setState({ contact: response.data.contacts[0] });
     } catch (err) {
-      return;
+      return err;
     }
   }
 
-  render() {
+  render () {
     return (
       <div id='page'>
         <h2>Contact</h2>

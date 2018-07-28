@@ -1,10 +1,9 @@
 import React from 'react';
 import NewsItem from './components/NewsItem/NewsItem.jsx';
-
 import callApi from '@/services/Api/api.js';
 
 class News extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       news: [],
@@ -17,20 +16,20 @@ class News extends React.Component {
   /**
    * We send a request to the API here to retrieve all the News.
    */
-  async componentDidMount() {
+  async componentDidMount () {
     try {
-      const response = await callApi("GET", "/news/", null, null);
+      const response = await callApi('GET', '/news/', null, null);
       this.setState({ news: response.data.news });
     } catch (err) {
       return;
     }
   }
 
-  handlePagination(event) {
+  handlePagination (event) {
     this.setState({ currentPage: Number(event.target.id) });
   }
 
-  render() {
+  render () {
     // Build the details of the data
     const { news, currentPage, itemsPerPage } = this.state;
     const indexLastItem = currentPage * itemsPerPage;
@@ -58,7 +57,7 @@ class News extends React.Component {
       <div id='page'>
         <h2>News</h2>
         {
-          currentNewsObjects && currentNewsObjects.map(function(item) {
+          currentNewsObjects && currentNewsObjects.map(function (item) {
             counter++;
             return <NewsItem key={ item + counter } data={ item } />;
           })

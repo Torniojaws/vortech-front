@@ -1,5 +1,3 @@
-'use strict';
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -7,8 +5,8 @@ const resolve = (dir) => {
   return path.join(__dirname, '..', dir);
 };
 
-let BUILD_DIR = path.resolve(__dirname, '../', 'build');
-let APP_DIR = path.resolve(__dirname, '../', 'src');
+const BUILD_DIR = path.resolve(__dirname, '../', 'build');
+const APP_DIR = path.resolve(__dirname, '../', 'src');
 
 const env = process.env.NODE_ENV || 'development';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import callApi from '@/services/Api/api.js';
 
 class UpdateBiography extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       updated: false,
@@ -12,31 +12,25 @@ class UpdateBiography extends React.Component {
     };
     this.updateBio = this.updateBio.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.receiveResponse = this.receiveResponse.bind(this);
   }
 
-  updateBio(event) {
+  async updateBio (event) {
     event.preventDefault();
-
-    const data = {
-      short: this.state.short,
-      full: this.state.full
-    };
-
+    const payload = { short: this.state.short, full: this.state.full };
     const headers = {
       'User': localStorage.userID,
       'Authorization': localStorage.accessToken
     };
 
-    const response = callApi('POST', '/biography/', data, headers);
-
-    response.then(res => {
-      this.receiveResponse(res);
-    })
-    .catch(err => err);
+    try {
+      const response = await callApi('POST', '/biography/', payload, headers);
+      this.setState({ added: response.status === 201 });
+    } catch (err) {
+      return err;
+    }
   }
 
-  handleChange(event) {
+  handleChange (event) {
     const target = event.target;
     const value = target.type === 'checkbox'
       ? target.checked
@@ -48,13 +42,7 @@ class UpdateBiography extends React.Component {
     });
   }
 
-  receiveResponse(r) {
-    this.setState({
-      added: r.status === 201
-    });
-  }
-
-  render() {
+  render () {
     return (
       <div>
         <h2>Update Biography</h2>
@@ -68,7 +56,7 @@ class UpdateBiography extends React.Component {
           localStorage.showForms &&
           <form
             className='bio-form'
-            onSubmit={this.updateBio}
+            onSubmit={ this.updateBio }
           >
             <div className='form-group'>
               <label htmlFor='short'>Short biography</label>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import capitalizeFirst from '@/services/Categories/Categories';
 
 class NewsItem extends React.Component {
-  render() {
+  render () {
     return (
       <div className='news'>
         <h3>
@@ -17,7 +17,7 @@ class NewsItem extends React.Component {
           </small>
         </h3>
         <div className='fadingBorder'>
-          <p dangerouslySetInnerHTML={{ __html: this.props.data.contents.replace(/\n/g, '<br />')}}></p>
+          <p dangerouslySetInnerHTML={{ __html: this.props.data.contents.replace(/\n/g, '<br />') }}></p>
           {
             Array.isArray(this.props.data.categories) && this.props.data.categories.length > 0 &&
             <p>Categories: { this.props.data.categories.map((category, index) => {

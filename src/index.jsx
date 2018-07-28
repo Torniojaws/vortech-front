@@ -36,7 +36,7 @@ require('es6-promise/auto');
 require('./main.scss');
 
 class App extends React.Component {
-  render() {
+  render () {
     return (
       <div className='container'>
         <Router>

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Recaptcha from 'react-recaptcha';
 import callApi from '@/services/Api/api.js';
 import axios from 'axios';
@@ -8,7 +7,7 @@ import axios from 'axios';
  * Post an item to the guestbook. Contains Captcha v2
  */
 class GuestbookForm extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       name: '',
@@ -27,7 +26,7 @@ class GuestbookForm extends React.Component {
     this.verifyCallback = this.verifyCallback.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     // For logged in users, no Captcha is showm
     if (parseInt(localStorage.getItem('userID'))) {
       this.getUsername(localStorage.getItem('userID'));
@@ -36,12 +35,12 @@ class GuestbookForm extends React.Component {
   }
 
   // specifying your onload callback function
-  onloadCallback() {
+  onloadCallback () {
     return 'Captcha';
   }
 
   // specifying verify callback function
-  async verifyCallback(response) {
+  async verifyCallback (response) {
     // GET https://www.google.com/recaptcha/api/siteverify?secret=your_secret&response=${response}&remoteip=user_ip_addres
     const secret = '6LeV0DoUAAAAAExxJYlRe5gWuTy1ucgafTYcLkJf';
     const myIP = '127.0.0.1'; // get real one
@@ -58,7 +57,7 @@ class GuestbookForm extends React.Component {
    * Return the UserID, if it exists in localStorage. Otherwise return the 'Guest ID', which is 1
    * @return {int} the UserID or guest ID
    */
-  getUserID() {
+  getUserID () {
     const userID = localStorage.getItem('userID');
     return !parseInt(userID)
       ? 1
@@ -70,7 +69,7 @@ class GuestbookForm extends React.Component {
    * @param {int} userID is the key to the data
    * @return {string} username
    */
-  async getUsername(userID) {
+  async getUsername (userID) {
     const headers = {
       'Authorization': localStorage.accessToken,
       'User': userID
@@ -88,7 +87,7 @@ class GuestbookForm extends React.Component {
   /**
    * When you submit the guestbook form, send it to the API.
    */
-  async handleSubmit(event) {
+  async handleSubmit (event) {
     event.preventDefault();
     const payload = {
       userID: this.getUserID(),
@@ -98,20 +97,14 @@ class GuestbookForm extends React.Component {
 
     try {
       await callApi('POST', '/guestbook/', payload, null);
-      this.setState({
-        submitted: true,
-        submitOk: true
-      });
+      this.setState({ submitted: true, submitOk: true });
       window.location.href = '/guestbook';
     } catch (err) {
-      this.setState({
-        submitted: true,
-        submitOk: false
-      });
+      this.setState({ submitted: true, submitOk: false });
     }
   }
 
-  handleChange(event) {
+  handleChange (event) {
     const target = event.target;
     const value = target.type === 'checkbox'
       ? target.checked
@@ -123,7 +116,7 @@ class GuestbookForm extends React.Component {
     });
   }
 
-  render() {
+  render () {
     return (
       <div>
         {

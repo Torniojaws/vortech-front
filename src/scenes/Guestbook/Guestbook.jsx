@@ -5,7 +5,7 @@ import GuestbookForm from './components/GuestbookForm/GuestbookForm.jsx';
 import GuestbookPost from './components/GuestbookPost/GuestbookPost.jsx';
 
 class Guestbook extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       guestbook: this.getPosts()
@@ -13,16 +13,16 @@ class Guestbook extends React.Component {
     this.getPosts = this.getPosts.bind(this);
   }
 
-  async getPosts() {
+  async getPosts () {
     try {
-      const response = await callApi("GET", "/guestbook/", null, null);
+      const response = await callApi('GET', '/guestbook/', null, null);
       this.setState({ guestbook: response.data.guestbook });
     } catch (err) {
       return [];
     }
   }
 
-  render() {
+  render () {
     return (
       <div id='page'>
         <h2>Guestbook</h2>

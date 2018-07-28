@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Footer extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       year: new Date().getFullYear()
@@ -12,11 +12,11 @@ class Footer extends React.Component {
   /**
    * Get the amount of visitors from the backend API
    */
-  getVisitorCount() {
+  getVisitorCount () {
     return 1234;
   }
 
-  render() {
+  render () {
     return (
       <footer>
         <hr />

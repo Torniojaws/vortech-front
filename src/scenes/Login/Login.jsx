@@ -1,5 +1,4 @@
 import React from 'react';
-
 import LoginForm from './components/LoginForm/LoginForm.jsx';
 
 /**
@@ -7,14 +6,14 @@ import LoginForm from './components/LoginForm/LoginForm.jsx';
  * login and register. Otherwise the user profile page link. etc.
  */
 class Login extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      loggedIn: localStorage.hasOwnProperty("accessToken")
+      loggedIn: localStorage.hasOwnProperty('accessToken')
     };
   }
 
-  render() {
+  render () {
     if (this.state.loggedIn) {
       return (
         <section>

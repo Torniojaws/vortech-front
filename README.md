@@ -28,3 +28,8 @@ https://github.com/Torniojaws/vortech-backend
 1. Clone the repository
 1. In the root, run ``npm run start``
 1. Open http://localhost:8100 in a browser
+
+NB: On some setups, there was a problem with pngquant:
+`Error: pngquant failed to build, make sure that libpng-dev is installed`
+
+To fix that, do: `sudo apt install libpng-dev` and then re-run `npm install`

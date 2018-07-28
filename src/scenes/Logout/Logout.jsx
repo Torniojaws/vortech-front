@@ -6,14 +6,14 @@ import callApi from '@/services/Api/api.js';
  * out, but we'll show a link to the login page if you go here without being logged in.
  */
 class Logout extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       loggedIn: localStorage.hasOwnProperty('accessToken')
     };
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
     if (this.state.loggedIn) {
       const headers = {
         'Authorization': localStorage.accessToken,
@@ -35,7 +35,7 @@ class Logout extends React.Component {
     return;
   }
 
-  render() {
+  render () {
     if (this.state.loggedIn === false) {
       return (
         <section>

@@ -1,12 +1,11 @@
 import React from 'react';
-
 import callApi from '@/services/Api/api.js';
 
 /**
  * This is the form where you can login as a user, to access features only users (or admin) can do.
  */
 class LoginForm extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       username: '',
@@ -22,7 +21,7 @@ class LoginForm extends React.Component {
   /**
    * When you submit the login form, we attempt to login.
    */
-  async handleSubmit(event) {
+  async handleSubmit (event) {
     event.preventDefault();
     const payload = {
       username: this.state.username,
@@ -37,19 +36,19 @@ class LoginForm extends React.Component {
     }
   }
 
-  handleUsernameChange(e) {
+  handleUsernameChange (e) {
     this.setState({
       username: e.target.value
     });
   }
 
-  handlePasswordChange(e) {
+  handlePasswordChange (e) {
     this.setState({
       password: e.target.value
     });
   }
 
-  receiveResponse(response) {
+  receiveResponse (response) {
     if (response.data.success === true) {
       this.setState({ loginFailed: false });
       // Login was successful. Let's store the tokens and user ID
@@ -63,7 +62,7 @@ class LoginForm extends React.Component {
     }
   }
 
-  render() {
+  render () {
     return (
       <div>
         {

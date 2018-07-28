@@ -1,10 +1,8 @@
-'use strict';
-
 import React from 'react';
 import callApi from '@/services/Api/api.js';
 
 class Profile extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.getUserData();
     this.state = {
@@ -21,7 +19,7 @@ class Profile extends React.Component {
    * Fetch the details from the API for the UserID we received from login. We also use the
    * access token so that you can't simply change the UserID to get someone elses data.
    */
-  async getUserData() {
+  async getUserData () {
     const headers = {
       'Authorization': localStorage.accessToken,
       'User': localStorage.userID
@@ -35,7 +33,7 @@ class Profile extends React.Component {
     }
   }
 
-  receiveResponse(r) {
+  receiveResponse (r) {
     const user = r.data.users[0];
     // 1=Guest, 2=Registered, 3=Moderator, 4=Admin
     const admin = user.level === 4
@@ -56,7 +54,7 @@ class Profile extends React.Component {
     });
   }
 
-  render() {
+  render () {
     return (
       <div>
         <section>

@@ -1,9 +1,8 @@
 import React from 'react';
-
 import callApi from '@/services/Api/api.js';
 
 class AddNews extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       added: false,
@@ -14,10 +13,9 @@ class AddNews extends React.Component {
     };
     this.addNews = this.addNews.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.receiveResponse = this.receiveResponse.bind(this);
   }
 
-  async addNews(event) {
+  async addNews (event) {
     event.preventDefault();
 
     const payload = {
@@ -40,7 +38,7 @@ class AddNews extends React.Component {
     }
   }
 
-  handleChange(event) {
+  handleChange (event) {
     const target = event.target;
     const value = target.type === 'checkbox'
       ? target.checked
@@ -52,7 +50,7 @@ class AddNews extends React.Component {
     });
   }
 
-  render() {
+  render () {
     return (
       <div>
         <h2>Add News</h2>

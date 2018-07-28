@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { formatDateYMD } from '@/services/Datetime/Datetime.js';
 
 class GuestbookPost extends React.Component {
-  render() {
+  render () {
     return (
       <div className='guestbookPost'>
         <div className='row'>
