@@ -45,17 +45,18 @@ module.exports = {
         test: /\.json$/,
         loader: 'json-loader'
       }, {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|woff)$/,
         loader: 'file-loader'
       }, {
-        test: /\.(woff)$/,
-        loader: 'file-loader'
+        test: /\.ico$/,
+        loader: 'file-loader?name=[name].[ext]'  // retain original file name
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
+      favicon: APP_DIR + '/static/img/favicon.ico',
       template: APP_DIR + '/index.html',
       inject: true,
     })

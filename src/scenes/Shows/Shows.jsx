@@ -31,13 +31,13 @@ class Shows extends React.Component {
     return (
       <div>
         <h2>Shows</h2>
-        <table className='table table-responsive'>
+        <table className='table' id='shows'>
           <thead>
             <tr>
-              <th className='col-sm-3'>Date</th>
-              <th className='col-sm-2'>Location</th>
-              <th className='col-sm-3'>Venue</th>
-              <th className='col-sm-5'>Other bands</th>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Venue</th>
+              <th>Other bands</th>
             </tr>
           </thead>
           <tbody>

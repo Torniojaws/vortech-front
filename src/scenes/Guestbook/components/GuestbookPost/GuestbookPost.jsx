@@ -12,7 +12,11 @@ class GuestbookPost extends React.Component {
             { formatDateYMD(this.props.data.createdAt) }
           </div>
           <div className='col-sm-9'>
-            <p>{ this.props.data.message }</p>
+            <p dangerouslySetInnerHTML={{ __html: this.props.data.message
+              .replace(/<br \/>/g, '\n')
+              .replace(/</g, '&lt;')
+              .replace(/\n/g, '<br />')
+            }}></p>
           </div>
         </div>
         {

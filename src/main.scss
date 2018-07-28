@@ -6,7 +6,7 @@ $dark-text: black;
 $faded-text: silver;
 
 body {
-  background: url("static/img/bg2018v3.jpg") black no-repeat center fixed;
+  background: url("static/img/bg2018v3-prog.jpg") black no-repeat center fixed;
   background-size: cover;
   color: white;
   font-family: "hattori_hanzolight";
@@ -157,6 +157,11 @@ img.release-image {
 img.shop-bandcamp {
   max-width: 500px;
   width: 100%;
+}
+
+/* Shows */
+table#shows {
+  table-layout: fixed;
 }
 
 /* Guestbook */

@@ -31,6 +31,8 @@ import Register from './scenes/Register/Register.jsx';
 import Profile from './scenes/Profile/Profile.jsx';
 import Logout from './scenes/Logout/Logout.jsx';
 
+import './static/img/favicon.ico';
+
 // Plugins and styles
 require('es6-promise/auto');
 require('./main.scss');
