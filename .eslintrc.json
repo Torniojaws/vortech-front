@@ -1,0 +1,33 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "jsx-quotes": ["error", "prefer-single"],
+    "no-return-await": ["error"],
+    "no-var": ["error"],
+    "object-curly-spacing": ["error", "always"],
+    "prefer-const": ["error"],
+    "quotes": ["error", "single"],
+    "require-await": ["error"],
+    "semi": 2,
+    "space-before-function-paren": ["error", "always"],
+    "strict": ["error", "safe"]
+  }
+}

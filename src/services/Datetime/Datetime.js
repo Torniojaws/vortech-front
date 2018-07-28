@@ -1,62 +1,46 @@
 /**
- * Various helper functions for handling dates and times.
- */
-
-
-/**
  * Convert seconds to MM:SS format. We'll never have values with hours, so just MM:SS is ok
  * @param {int} s is the seconds we convert
  * @return {string} the resulting value
  */
-export function formatSeconds(s) {
-    let minutes = Math.floor(s / 60);
-    let seconds = s % 60;
+const formatSeconds = sec => {
+  let minutes = Math.floor(sec / 60);
+  let seconds = sec % 60;
 
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
+  if (minutes < 10) minutes = '0' + minutes;
+  if (seconds < 10) seconds = '0' + seconds;
 
-    if (seconds < 10) {
-        seconds = "0" + seconds;
-    }
-
-    return (minutes + ":" + seconds);
-}
+  return `${minutes}:${seconds}`;
+};
 
 /**
  * Based on the input value, return the string version of the month.
  * @param {int} month should be a value between 0..11
  * @return {string} the full month
  */
-function getMonthName(month) {
-    let months = new Array(12);
-    months[0] = "Jan";
-    months[1] = "Feb";
-    months[2] = "Mar";
-    months[3] = "Apr";
-    months[4] = "May";
-    months[5] = "Jun";
-    months[6] = "Jul";
-    months[7] = "Aug";
-    months[8] = "Sep";
-    months[9] = "Oct";
-    months[10] = "Nov";
-    months[11] = "Dec";
-
-    return months[month];
-}
+const getMonthName = month => {
+  const months = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
+  return months[month];
+};
 
 /**
  * Format the DateTime date in "YYYY, m d" format.
  * @param {string} date in datetime format
  * @return {string} the date in the format we want
  */
-export function formatDateYMD(d) {
-    let dateObj = new Date(d);
+const formatDateYMD = date => {
+  const dateObj = new Date(date);
 
-    let year = dateObj.getFullYear();
-    let month = dateObj.getMonth();
-    let day = dateObj.getDate();
+  const year = dateObj.getFullYear();
+  const month = dateObj.getMonth();
+  const day = dateObj.getDate();
 
-    return year + " - " + getMonthName(month) + " " + day;
-}
+  return `${year} - ${getMonthName(month)} ${day}`;
+};
+
+module.exports = {
+  formatDateYMD,
+  formatSeconds
+};
