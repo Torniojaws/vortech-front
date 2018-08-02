@@ -3,6 +3,7 @@ import Modal from 'react-responsive-modal';
 import callApi from '@/services/Api/api.js';
 import PropTypes from 'prop-types';
 import { formatDateYMD, formatSeconds } from '@/services/Datetime/Datetime.js';
+import SongTablatures from './components/SongTablatures';
 
 class Release extends React.Component {
   constructor (props) {
@@ -80,10 +81,10 @@ class Release extends React.Component {
   }
 
   /**
-     * Return the download count for a given release.
-     * @param {int} rid is the release ID
-     * @return {int} the amount of downloads
-     */
+   * Return the download count for a given release.
+   * @param {int} rid is the release ID
+   * @return {int} the amount of downloads
+   */
   async getDownloadCount () {
     try {
       const response = await callApi('GET', `/downloads/releases/${this.props.release.id}`, null, null);
@@ -94,10 +95,10 @@ class Release extends React.Component {
   }
 
   /**
-     * Create a nice filename, eg. 2016-devoid of life.zip. All album files are zip files.
-     * @param {datetime} date is the full release date
-     * @param {string} title is the name of the album
-     */
+   * Create a nice filename, eg. 2016-devoid of life.zip. All album files are zip files.
+   * @param {datetime} date is the full release date
+   * @param {string} title is the name of the album
+   */
   getFilename (d, title) {
     const dateObj = new Date(d);
     const year = dateObj.getFullYear();
@@ -155,6 +156,7 @@ class Release extends React.Component {
                       <td>{ song.title }</td>
                       <td>{ formatSeconds(song.duration) }</td>
                       <td><a href='javascript:;' onClick={ () => this.onOpenModal(song.id) }>Lyrics</a></td>
+                      <SongTablatures songId={ song.id } />
                     </tr>
                   );
                 }, this)
