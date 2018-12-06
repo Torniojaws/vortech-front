@@ -95,9 +95,10 @@ div.news {
     font-size: 1.1em;
     text-transform: uppercase;
     small {
+      color: $faded-text;
+      font-size: 60%;
       position: relative;
-      left: 5px;
-      top: -1px;
+      top: 6px;
     }
   }
   p, footer {

@@ -12,6 +12,7 @@ class RegisterForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.receiveResponse = this.receiveResponse.bind(this);
   }
 
   /**
@@ -28,12 +29,36 @@ class RegisterForm extends React.Component {
     };
 
     try {
-      await callApi('POST', '/users/', payload, null);
+      const response = await callApi('POST', '/users/', payload, {});
+      this.receiveResponse(response, resultInfoBox);
+    } catch (err) {
+      this.handleError(err, resultInfoBox);
+    }
+  }
+
+  handleError (err, resultInfoBox) {
+    const data = err.response.data;
+    let message = data.result
+      ? `${data.result}<br />`
+      : 'No response from server - try again';
+
+    if (data.errors) {
+      Object.keys(data.errors).forEach((key) => {
+        message += key + ': ' + data.errors[key][0] + '<br />';
+      });
+    }
+
+    resultInfoBox.className = 'alert alert-danger';
+    resultInfoBox.innerHTML = message;
+  }
+
+  receiveResponse (response, resultInfoBox) {
+    if (response.status === 201) {
       resultInfoBox.className = 'alert alert-success';
       resultInfoBox.innerHTML = 'Successfully registered!';
-    } catch (err) {
+    } else {
       resultInfoBox.className = 'alert alert-danger';
-      resultInfoBox.innerHTML = '<b>Error:</b> ' + err.response.data.result;
+      resultInfoBox.innerHTML = `${response.data.result}`;
     }
   }
 
