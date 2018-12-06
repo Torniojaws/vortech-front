@@ -10,7 +10,7 @@ class WelcomePage extends React.Component {
         <p>Fast. Futuristic. Electrified.</p>
         <hr/>
 
-        <p>We are currently recording the instruments for our 8th full length album, due out in late 2018 / early 2019!
+        <p>We are currently recording the vocals for our 8th full length album, due out in early 2019!
         It will contain a heavy dose of industrial-tinged death metal for your listening
         pleasure. The theme is placed far in the future, in a Mad Max-esque hi-tech dystopia.</p>
         <p>This brand new website still has some things left to do, so a lot of things are

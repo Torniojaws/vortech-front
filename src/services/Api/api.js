@@ -14,20 +14,22 @@ const axios = require('axios');
  */
 const callApi = async (method, endpoint, data, headers) => {
   const baseUrl = 'https://vortechmusic.com/api/1.0';
+  // const baseUrl = 'http://localhost:5000/api/1.0';
   const url = baseUrl + endpoint;
 
   try {
     return await axios({
       method: method.toLowerCase(),
-      url: url,
-      data: data,
-      headers: headers
+      url,
+      data,
+      headers,
     });
   } catch (err) {
     if (err.response.status === 401) {
       attemptRefresh(baseUrl);
       return retry(method, url, data, headers);
     }
+    throw err;
   }
 };
 
