@@ -16,7 +16,10 @@ class AllReleases extends React.Component {
     const headers = { 'Authorization': localStorage.accessToken };
     try {
       const response = await callApi('GET', '/releases/', null, headers);
-      this.setState({ releases: response.data.releases });
+      // Sort the albums by release date - newest first
+      this.setState({ releases: response.data.releases.sort(
+        (a, b) => (a.releaseDate < b.releaseDate) ? 1 : -1
+      ) });
     } catch (err) {
       return err;
     }
