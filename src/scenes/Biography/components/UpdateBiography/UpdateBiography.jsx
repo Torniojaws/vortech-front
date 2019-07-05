@@ -24,7 +24,7 @@ class UpdateBiography extends React.Component {
 
     try {
       const response = await callApi('POST', '/biography/', payload, headers);
-      this.setState({ added: response.status === 201 });
+      this.setState({ updated: response.status === 201 });
     } catch (err) {
       return err;
     }
